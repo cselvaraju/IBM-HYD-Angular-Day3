@@ -1,0 +1,58 @@
+<div class="container">
+  <h3>Actor List</h3>
+  <div *ngIf="!actorList">
+    <img src="../../../assets/wait-spinner.gif" alt="">
+  </div>
+  <div *ngIf="actorList">
+    <table class="table table-striped table-hover">
+      <thead>
+        <th>Name</th>
+        <th>City</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actor of actorList; index as ndx" (dblclick)="editActor(ndx)" (keyup)="keyHandler($event)">
+          <td>
+            <span *ngIf="ndx != selectedIndex">{{ actor.name }}</span>
+            <span *ngIf="ndx == selectedIndex">
+              <input type="text" [(ngModel)]="actor.name">
+            </span>
+          </td>
+          <td>
+            <span *ngIf="ndx != selectedIndex">{{ actor.city }}</span>
+            <span *ngIf="ndx == selectedIndex">
+              <input type="text" [(ngModel)]="actor.city">
+            </span>
+          </td>
+          <td>
+            <span *ngIf="ndx != selectedIndex">
+              <button class="btn btn-primary" (click)="editActor(ndx)">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteActor(ndx)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </span>
+            <span *ngIf="ndx == selectedIndex">
+              <button class="btn btn-primary" (click)="updateActor()">
+                <i class="fa fa-floppy-o"></i>
+              </button>
+              <button class="btn btn-primary" (click)="cancelEdit()">
+                <i class="fa fa-undo"></i>
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <div>
+      Name: <input type="text" [(ngModel)]="newActor.name"><br>
+      City: <input type="text" [(ngModel)]="newActor.city"><br>
+      <button class="btn btn-primary" (click)="addActor()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+
+  </div>
+</div>

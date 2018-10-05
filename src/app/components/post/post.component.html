@@ -1,0 +1,11 @@
+<div>
+  <button (click)="createPost()">Create Post</button>
+  <p></p>
+  <h3>List of Posts</h3>
+  <div class="card col-lg-6 mb-2" *ngFor="let post of posts">
+    <div class="card-body">
+      <div class="card-title">{{ post.id }} {{ post.title }}</div>
+      <div class="card-text">{{ post.body }}</div>
+    </div>
+  </div>
+</div>

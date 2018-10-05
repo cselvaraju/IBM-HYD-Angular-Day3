@@ -1,0 +1,8 @@
+<div>
+  <h5>Parent Component</h5>
+  {{ message }}
+  <app-child 
+    [childCount]="parentCount"
+    (countChanged)="onCountChanged($event)">
+  </app-child>
+</div>
